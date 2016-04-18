@@ -14,7 +14,7 @@ public class Bullet {
     public Bullet(Rectangle rec, float dir, float speed) { //Deep Copy-Constructor
         bbox = new Rectangle(rec.getX(), rec.getY(), rec.getWidth(), rec.getHeight());
         direction = dir;
-        this.speed = speed;
+        this.speed = speed; // penis
     }
 
     public Rectangle getRectangle() {
