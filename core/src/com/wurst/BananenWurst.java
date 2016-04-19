@@ -3,7 +3,7 @@ package com.wurst;
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
-import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
@@ -28,11 +28,22 @@ public class BananenWurst extends ApplicationAdapter {
 	private int score;
 	public static int  lifes;
 	private BulletManager bullet;
+	private Sound soundGameOver;
+	private Sound soundPoint;
+	private Sound soundGameTrack;
+	private long idGameTrack;
+	private float pitch;
 
 	boolean penis = false;
 
 	@Override
 	public void create () {
+		soundGameOver = Gdx.audio.newSound(Gdx.files.internal("gameOver.mp3"));
+		soundGameTrack = Gdx.audio.newSound(Gdx.files.internal("gameTrack.mp3"));
+		soundPoint = Gdx.audio.newSound(Gdx.files.internal("gamePoint.mp3"));
+		idGameTrack = soundGameTrack.loop(0.6f);
+		pitch = 0.7f;
+		soundGameTrack.setPitch(idGameTrack, pitch);
 
 		batch = new SpriteBatch();
 		img = new Texture("badlogic.jpg");
@@ -62,6 +73,8 @@ public class BananenWurst extends ApplicationAdapter {
 		lifes = 5;
 
 		bullet = new BulletManager();
+
+
 	}
 
 	@Override
@@ -93,15 +106,22 @@ public class BananenWurst extends ApplicationAdapter {
 		bullet.overlap(rec);
 		if(rec.overlaps(spr.getBoundingRectangle())) {
 			spr.setPosition((float)Math.random() * 300,(float) Math.random() * 300);
+			soundPoint.play();
+			pitch += 0.005;
+			soundGameTrack.setPitch(idGameTrack, pitch);
 			score++;
 		}
 
 		if(lifes <= 0){
+			soundGameTrack.stop();
+			soundGameOver.play(4);
+
 			try {
-				Thread.sleep(2000);
+				Thread.sleep(6000);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
+
 			Gdx.app.exit();
 		}
 /*

@@ -1,6 +1,7 @@
 package com.wurst;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Rectangle;
 
@@ -16,12 +17,14 @@ public class BulletManager {
     private Rectangle rec;
     private float speed;
     private Random rand;
+    private Sound soundDamage;
 
     public BulletManager() {
         bullets = new ArrayList<Bullet>();
         time = System.currentTimeMillis();
         rec = new Rectangle(0, 0, 16, 16);
         rand = new Random();
+        soundDamage = Gdx.audio.newSound(Gdx.files.internal("gameDamage1.mp3"));
     }
 
     public void update(int score) {
@@ -59,6 +62,7 @@ public class BulletManager {
         for(Bullet b : bullets) {
             if (b.getRectangle().overlaps(rec)) {
                 bullets.remove(b);
+                soundDamage.play();
                 BananenWurst.lifes--;
                 return true;
             }
