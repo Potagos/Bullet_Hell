@@ -42,7 +42,7 @@ public class BulletManager {
             b.setPosition(b.getPosition().x + (float)Math.sin(direction)*b.getSpeed(),
                         b.getPosition().y + (float)Math.cos(direction)*b.getSpeed());
 
-            if(b.getPosition().x > BananenWurst.WIDTH || b.getPosition().y > BananenWurst.HEIGHT) {
+            if(b.getPosition().x > Gdx.graphics.getWidth() || b.getPosition().y > Gdx.graphics.getHeight()) {
                 bullets.remove(b);
             }
         }
