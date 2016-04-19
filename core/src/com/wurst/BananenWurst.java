@@ -15,8 +15,6 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Rectangle;
 
 public class BananenWurst extends ApplicationAdapter {
-	public  static int WIDTH;
-	public static int HEIGHT;
 	private SpriteBatch batch;
 	private Texture img;
 	private Texture texMario;
@@ -33,13 +31,9 @@ public class BananenWurst extends ApplicationAdapter {
 
 	boolean penis = false;
 
-	public BananenWurst(LwjglApplicationConfiguration config){
-		WIDTH = config.width;
-		HEIGHT = config.height;
-	}
-
 	@Override
 	public void create () {
+
 		batch = new SpriteBatch();
 		img = new Texture("badlogic.jpg");
 		texMario = new Texture("BabyMario.png");
