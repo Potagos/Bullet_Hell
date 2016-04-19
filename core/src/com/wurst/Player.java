@@ -38,19 +38,19 @@ public class Player {
     public void update() {
         switch(dir) {
             case UP : {
-                pos.y += speed;
+                pos.y = (float)(pos.y + speed) % BananenWurst.HEIGHT;
                 break;
             }
             case DOWN : {
-                pos.y -= speed;
+                pos.y = (float)(pos.y - speed + BananenWurst.HEIGHT) % BananenWurst.HEIGHT; //Beseitigung der fehlerhaften Berechnung von Modulo in Java
                 break;
             }
             case RIGHT : {
-                pos.x += speed;
+                pos.x = (float)(pos.x + speed) % BananenWurst.WIDTH;;
                 break;
             }
             case LEFT : {
-                pos.x -= speed;
+                pos.x = (float)(pos.x - speed + BananenWurst.WIDTH) % BananenWurst.WIDTH;   //Beseitigung der fehlerhaften Berechnung von Modulo in Java
                 break;
             }
             case STAND : {

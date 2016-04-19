@@ -10,7 +10,7 @@ import com.badlogic.gdx.InputProcessor;
 public class InputManager implements InputProcessor {
 
     private Player p;
-    private final float SPEED = 200.0f;
+    private float SPEED = 200.0f;
 
     InputManager(Player p) {
         this.p = p;
