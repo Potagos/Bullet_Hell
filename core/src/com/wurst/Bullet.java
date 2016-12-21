@@ -5,7 +5,9 @@ import com.badlogic.gdx.math.Vector2;
 
 /**
  * Created by Maxi on 15.04.2016.
+ *  Sven isn spacko
  */
+
 public class Bullet {
     private Rectangle bbox;
     private float direction; //Degree

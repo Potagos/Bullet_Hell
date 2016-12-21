@@ -32,9 +32,9 @@ public class Player {
         return pos;
     }
 
-    public double getSpeed() {
-        return speed;
-    }
+    //public double getSpeed() {
+      //  return speed;
+    //}
 
     public void update() {
         switch(dir) {
